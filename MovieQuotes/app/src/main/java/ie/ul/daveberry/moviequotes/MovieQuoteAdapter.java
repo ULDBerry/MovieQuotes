@@ -28,12 +28,12 @@ public class MovieQuoteAdapter extends RecyclerView.Adapter<MovieQuoteAdapter.Mo
   public MovieQuoteAdapter() {
     CollectionReference moviequotesRef = FirebaseFirestore.getInstance().collection(Constants.COLLECTION_PATH);
 
-    moviequotesRef.orderBy(Constants.KEY_CREATED, Query.Direction.DESCENDING).limit(50)
+     moviequotesRef.orderBy(Constants.KEY_CREATED, Query.Direction.DESCENDING).limit(50)
         .addSnapshotListener(new EventListener<QuerySnapshot>() {
       @Override
       public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
         if (e != null) {
-          Log.w(Constants.TAG, "Listening failed!");
+          Log.w(Constants.TAG, "Listening failed");
           return;
         }
         mMovieQuoteSnapshots = documentSnapshots.getDocuments();
@@ -41,6 +41,7 @@ public class MovieQuoteAdapter extends RecyclerView.Adapter<MovieQuoteAdapter.Mo
       }
     });
   }
+
 
   @NonNull
   @Override
